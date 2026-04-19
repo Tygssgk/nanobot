@@ -1,72 +1,30 @@
-model_list:
-  # GEMINI FLASH (3 KEY) — Primary
-  - model_name: gemini-flash
-    litellm_params:
-      model: openai/gemini-2.5-flash
-      api_key: "AIzaSyCAL6L2zLmEffUQSJ4sYsbDBgpJy1WXwO8"
-      api_base: "https://generativelanguage.googleapis.com/v1beta/openai/"
-
-  - model_name: gemini-flash
-    litellm_params:
-      model: openai/gemini-2.5-flash
-      api_key: "AIzaSyCVFBhe0_El-Bf_LM4uLHq9Vb2cs1MIOfI"
-      api_base: "https://generativelanguage.googleapis.com/v1beta/openai/"
-
-  - model_name: gemini-flash
-    litellm_params:
-      model: openai/gemini-2.5-flash
-      api_key: "AIzaSyB2H3J-E5ZabAzFqcN_2ddmCIxwoV5S3mQ"
-      api_base: "https://generativelanguage.googleapis.com/v1beta/openai/"
-
-  # GEMINI PRO (2 KEY) — Tugas berat
-  - model_name: gemini-pro
-    litellm_params:
-      model: openai/gemini-2.5-pro
-      api_key: "AIzaSyCdIg85xiy8vFb7WeweunIZsegS6NA0fH0"
-      api_base: "https://generativelanguage.googleapis.com/v1beta/openai/"
-
-  - model_name: gemini-pro
-    litellm_params:
-      model: openai/gemini-2.5-pro
-      api_key: "AIzaSyCBAWGWBXOMfT3Gs6kMgpx9efXu5jTgl6g"
-      api_base: "https://generativelanguage.googleapis.com/v1beta/openai/"
-
-  # CEREBRAS (2 KEY) — Fallback utama, 1 juta token/hari, tool calling OK
-  - model_name: cerebras-smart
-    litellm_params:
-      model: cerebras/llama-3.3-70b
-      api_key: "csk-5h4eh6664c29kx85ecme2m243c4yvk45k2fk63mveccphhdc"
-
-  - model_name: cerebras-smart
-    litellm_params:
-      model: cerebras/llama-3.3-70b
-      api_key: "csk-xkp849d52f4mp982xpn6vxmc8c6jt6e3cvm3e4t9m38mn9tf"
-
-router_settings:
-  routing_strategy: simple-shuffle
-  num_retries: 3
-  retry_after: 5
-  cooldown_time: 60
-  timeout: 60
-
-  fallbacks:
-    - gemini-flash:
-        - gemini-pro
-        - cerebras-smart
-
-    - gemini-pro:
-        - gemini-flash
-        - cerebras-smart
-
-    - cerebras-smart:
-        - gemini-flash
-        - gemini-pro
-
-litellm_settings:
-  drop_params: true
-  modify_params: true
-  return_response_headers: false
-
-general_settings:
-  master_key: "sk-ikbal-2026"
-  forward_openai_org_id: false
+{
+  "providers": {
+    "custom": {
+      "apiKey": "sk-ikbal-2026",
+      "apiBase": "https://litellm-proxy-production-279e.up.railway.app"
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": "gemini-flash",
+      "provider": "custom",
+      "maxTokens": 4096,
+      "contextWindowTokens": 32000,
+      "temperature": 0.1,
+      "maxToolIterations": 100,
+      "maxToolResultChars": 10000,
+      "sessionTtlMinutes": 60,
+      "timezone": "Asia/Jakarta"
+    }
+  },
+  "channels": {
+    "sendProgress": false,
+    "sendToolHints": false,
+    "telegram": {
+      "enabled": true,
+      "token": "8377870634:AAGGJnweGWA6i2qMIhcMyhYfd3hdpMb2Bl4",
+      "allowFrom": ["8064644119"]
+    }
+  }
+}
