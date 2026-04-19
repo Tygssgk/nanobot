@@ -9,14 +9,25 @@
     "defaults": {
       "model": "gemini-flash",
       "provider": "custom",
-      "maxTokens": 8192,
-      "contextWindowTokens": 165536,
+
+      "maxTokens": 4096,,
+      "contextWindowTokens": 32000,
       "temperature": 0.1,
-      "maxToolIterations": 200,
-      "timezone": "Asia/Jakarta"
+      "maxToolIterations": 100,
+      "maxToolResultChars": 10000,
+
+      "sessionTtlMinutes": 60,
+
+      "timezone": "Asia/Jakarta",
+
+      "dream": {
+        "intervalH": 6
+      }
     }
   },
   "channels": {
+    "sendProgress": false,
+    "sendToolHints": false,
     "telegram": {
       "enabled": true,
       "token": "8377870634:AAGGJnweGWA6i2qMIhcMyhYfd3hdpMb2Bl4",
