@@ -1,4 +1,4 @@
-{
+ko{
   "providers": {
     "custom": {
       "apiKey": "sk-ikbal-2026",
@@ -10,7 +10,7 @@
       "model": "gemini-flash",
       "provider": "custom",
       "maxTokens": 8192,
-      "contextWindowTokens": 65536,
+      "contextWindowTokens": 150000,
       "temperature": 0.1,
       "maxToolIterations": 200,
       "timezone": "Asia/Jakarta"
