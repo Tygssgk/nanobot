@@ -1,0 +1,26 @@
+{
+  "providers": {
+    "custom": {
+      "apiKey": "sk-ikbal-2026",
+      "apiBase": "https://litellm-proxy-production-279e.up.railway.app"
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": "gemini-flash",
+      "provider": "custom",
+      "maxTokens": 8192,
+      "contextWindowTokens": 65536,
+      "temperature": 0.1,
+      "maxToolIterations": 200,
+      "timezone": "Asia/Jakarta"
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "token": "8377870634:AAGGJnweGWA6i2qMIhcMyhYfd3hdpMb2Bl4",
+      "allowFrom": ["8064644119"]
+    }
+  }
+}
