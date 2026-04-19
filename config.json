@@ -9,20 +9,13 @@
     "defaults": {
       "model": "gemini-flash",
       "provider": "custom",
-
-      "maxTokens": 4096,,
+      "maxTokens": 4096,
       "contextWindowTokens": 32000,
       "temperature": 0.1,
       "maxToolIterations": 100,
       "maxToolResultChars": 10000,
-
       "sessionTtlMinutes": 60,
-
-      "timezone": "Asia/Jakarta",
-
-      "dream": {
-        "intervalH": 6
-      }
+      "timezone": "Asia/Jakarta"
     }
   },
   "channels": {
